@@ -6,11 +6,10 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:15:04 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/19 16:04:14 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/21 14:51:01 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "push_swap.h"
 
 static long ft_atol(const char *str)

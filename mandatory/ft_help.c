@@ -6,11 +6,33 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:16:39 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/19 15:57:22 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/21 11:39:51 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void    assign_index(t_stack *a)
+{
+    t_stack *current;
+    t_stack *compare;
+    int index;
+
+    current = a;
+    while (current)
+    {
+        index = 0;
+        compare = a;
+        while (compare)
+        {
+            if (compare->content < current->content)
+                index++;
+            compare = compare->next;
+        }
+        current->index = index;
+        current = current->next;
+    }
+}
 
 void error_exit(void)
 {

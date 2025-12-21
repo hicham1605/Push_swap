@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:26:03 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/19 15:58:04 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/21 11:39:57 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ void create_stacks(char **nums, t_stack **a, t_stack **b)
         add_to_stack(a, new_node((int)value));
         i++;
     }
+    assign_index(*a);
 }

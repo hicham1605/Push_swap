@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/16 10:26:48 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/20 11:13:29 by hiouzddo         ###   ########.fr       */
+/*   Created: 2025/12/21 14:59:00 by hiouzddo          #+#    #+#             */
+/*   Updated: 2025/12/21 15:05:30 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void		rra(t_stack **a);
 void		rrb(t_stack **b);
 void		rrr(t_stack **a, t_stack **b);
 void		create_stacks(char **nums, t_stack **a, t_stack **b);
+void        assign_index(t_stack *a);
 int			ft_is_sorted(t_stack *a);
-void		sort_2(t_stack **a);
-void		sort_3(t_stack **a);
+void		sort_2(t_stack **a, t_stack **b);
+void		sort_3(t_stack **a, t_stack **b);
 void		sort_5(t_stack **a, t_stack **b);
-// void		algo_sort(t_stack **a, t_stack **b);
+void		algo_sort(t_stack **a, t_stack **b);
 void		free_stacks(t_stack **a, t_stack **b);
 int			stack_size(t_stack *stack);
 t_stack		*find_last(t_stack *stack);
