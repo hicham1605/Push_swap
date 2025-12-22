@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 13:29:16 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/22 11:57:26 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/22 14:56:49 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_stack	*ft_find_max(t_stack *stack)
 
 void	ft_last_step(t_stack **a, t_stack **b)
 {
-	t_stack *max;
+	t_stack	*max;
 
 	max = ft_find_max(*b);
 	while (*b)
@@ -69,7 +69,8 @@ void	ft_last_step(t_stack **a, t_stack **b)
 
 void	ft_sort_stacks(t_stack **a, t_stack **b)
 {
-	int *array;
+	int	*array;
+
 	array = fall_array(a);
 	algo_sort(a, b, array);
 	ft_last_step(a, b);

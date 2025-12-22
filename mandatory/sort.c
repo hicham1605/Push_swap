@@ -6,24 +6,24 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 16:12:49 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/21 15:03:17 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/22 15:05:48 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_2(t_stack **a, t_stack **b)
+void	sort_2(t_stack **a, t_stack **b)
 {
 	(void)b;
 	if (*a && (*a)->content > (*a)->next->content)
 		sa(a);
 }
 
-void sort_3(t_stack **a, t_stack **b)
+void	sort_3(t_stack **a, t_stack **b)
 {
-	int first;
-	int second;
-	int third;
+	int	first;
+	int	second;
+	int	third;
 
 	(void)b;
 	first = (*a)->content;
@@ -47,7 +47,7 @@ void sort_3(t_stack **a, t_stack **b)
 		rra(a);
 }
 
-void sort_5(t_stack **a, t_stack **b)
+void	sort_5(t_stack **a, t_stack **b)
 {
 	while (stack_size(*a) > 3)
 	{

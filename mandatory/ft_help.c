@@ -6,103 +6,103 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:16:39 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/21 11:39:51 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/22 15:28:32 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    assign_index(t_stack *a)
+void	assign_index(t_stack *a)
 {
-    t_stack *current;
-    t_stack *compare;
-    int index;
+	t_stack	*current;
+	t_stack	*compare;
+	int		index;
 
-    current = a;
-    while (current)
-    {
-        index = 0;
-        compare = a;
-        while (compare)
-        {
-            if (compare->content < current->content)
-                index++;
-            compare = compare->next;
-        }
-        current->index = index;
-        current = current->next;
-    }
+	current = a;
+	while (current)
+	{
+		index = 0;
+		compare = a;
+		while (compare)
+		{
+			if (compare->content < current->content)
+				index++;
+			compare = compare->next;
+		}
+		current->index = index;
+		current = current->next;
+	}
 }
 
-void error_exit(void)
+// void	error_exit(void)
+// {
+// 	write(2, "Error\n", 6);
+// 	exit(1);
+// }
+
+// int	count_len_num(char **nums)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (nums[i])
+// 		i++;
+// 	return (i);
+// }
+
+// void	check_empty(char **nums)
+// {
+// 	if (!nums || !nums[0])
+// 		error_exit();
+// }
+
+void	ft_free_split(char **split)
 {
-    write(2, "Error\n", 6);
-    exit(1);
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }
 
-int count_len_num(char **nums)
+void	free_stacks(t_stack **a, t_stack **b)
 {
-    int i;
+	t_stack	*tmp;
 
-    i = 0;
-    while (nums[i])
-        i++;
-    return (i);
+	while (*a)
+	{
+		tmp = (*a)->next;
+		free(*a);
+		*a = tmp;
+	}
+	while (*b)
+	{
+		tmp = (*b)->next;
+		free(*b);
+		*b = tmp;
+	}
 }
 
-void check_empty(char **nums)
+int	stack_size(t_stack *stack)
 {
-    if (!nums || !nums[0])
-        error_exit();
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }
 
-void ft_free_split(char **split)
+t_stack	*find_last(t_stack *stack)
 {
-    int i;
-
-    i = 0;
-    while (split[i])
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
-}
-
-void free_stacks(t_stack **a, t_stack **b)
-{
-    t_stack *tmp;
-
-    while (*a)
-    {
-        tmp = (*a)->next;
-        free(*a);
-        *a = tmp;
-    }
-    while (*b)
-    {
-        tmp = (*b)->next;
-        free(*b);
-        *b = tmp;
-    }
-}
-
-int stack_size(t_stack *stack)
-{
-    int size;
-
-    size = 0;
-    while (stack)
-    {
-        size++;
-        stack = stack->next;
-    }
-    return (size);
-}
-
-t_stack *find_last(t_stack *stack)
-{
-    while (stack && stack->next)
-        stack = stack->next;
-    return (stack);
+	while (stack && stack->next)
+		stack = stack->next;
+	return (stack);
 }

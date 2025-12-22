@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_push.c                                   :+:      :+:    :+:   */
+/*   ft_help1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 17:20:36 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/22 15:07:32 by hiouzddo         ###   ########.fr       */
+/*   Created: 2025/12/22 15:27:58 by hiouzddo          #+#    #+#             */
+/*   Updated: 2025/12/22 15:30:17 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack **a, t_stack **b)
+void	error_exit(void)
 {
-	t_stack	*tmp;
-
-	if (!*b)
-		return ;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = *a;
-	*a = tmp;
-	write(1, "pa\n", 3);
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
-void	pb(t_stack **a, t_stack **b)
+int	count_len_num(char **nums)
 {
-	t_stack	*tmp;
+	int	i;
 
-	if (!*a)
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = *b;
-	*b = tmp;
-	write(1, "pb\n", 3);
+	i = 0;
+	while (nums[i])
+		i++;
+	return (i);
+}
+
+void	check_empty(char **nums)
+{
+	if (!nums || !nums[0])
+		error_exit();
 }
