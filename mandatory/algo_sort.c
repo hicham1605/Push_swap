@@ -6,15 +6,72 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 13:29:16 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/21 15:07:05 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/22 11:57:26 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	algo_sort(t_stack **a, t_stack **b)
+int	current_index(t_stack *stack, t_stack *max)
 {
-	(void)a;
-	(void)b;
-	write(1, "Sorting algorithm for 5 or more, not yet implemented.\n", 55);
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		if (stack == max)
+			return (i);
+		else
+			stack = stack->next;
+		i++;
+	}
+	return (i);
+}
+
+t_stack	*ft_find_max(t_stack *stack)
+{
+	t_stack	*max;
+	t_stack	*cur;
+
+	if (!stack)
+	{
+		return (NULL);
+	}
+	max = stack;
+	cur = stack->next;
+	while (cur != NULL)
+	{
+		if (cur->content > max->content)
+			max = cur;
+		cur = cur->next;
+	}
+	return (max);
+}
+
+void	ft_last_step(t_stack **a, t_stack **b)
+{
+	t_stack *max;
+
+	max = ft_find_max(*b);
+	while (*b)
+	{
+		if ((*b)->content == max->content)
+		{
+			pa(a, b);
+			max = ft_find_max(*b);
+		}
+		else if (current_index(*b, max) <= ft_len_stack(b) / 2)
+			rb(b);
+		else
+			rrb(b);
+	}
+}
+
+void	ft_sort_stacks(t_stack **a, t_stack **b)
+{
+	int *array;
+	array = fall_array(a);
+	algo_sort(a, b, array);
+	ft_last_step(a, b);
+	free(array);
 }

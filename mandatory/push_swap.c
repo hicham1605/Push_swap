@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 14:58:36 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/21 15:05:10 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/22 13:05:01 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int ac, char **av)
     }
     else
         nums = av + 1;
-    check_digits(nums);
+    check_digits(nums, &a, &b, should_free);
     create_stacks(nums, &a, &b);
     if (ft_is_sorted(a))
     {
@@ -42,14 +42,14 @@ int main(int ac, char **av)
         return (0);
     }
     if (stack_size(a) == 2)
-    sort_2(&a, &b);
+        sort_2(&a, &b);
     else if (stack_size(a) == 3)
-    sort_3(&a, &b);
+        sort_3(&a, &b);
     else if(stack_size(a) <= 5)
-    sort_5(&a, &b);
+        sort_5(&a, &b);
     else
-        algo_sort(&a, &b);
-    // free_stacks(&a, &b);
+        ft_sort_stacks(&a, &b);
+    free_stacks(&a, &b);
     if (should_free)
         ft_free_split(nums);
     return (0);

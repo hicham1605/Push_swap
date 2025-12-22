@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:15:04 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/21 14:51:01 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/22 13:03:38 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void duplicate(long *arr, int size)
     }
 }
 
-static void check_duplicate_overflow(char **nums)
+static void check_duplicate_overflow(char **nums, t_stack **a, t_stack **b, int should_free)
 {
     int		i;
     int		count;
@@ -71,6 +71,9 @@ static void check_duplicate_overflow(char **nums)
         if (arr[i] < INT_MIN || arr[i] > INT_MAX)
         {
             free(arr);
+            free_stacks(a, b);
+            if (should_free)
+                ft_free_split(nums);
             error_exit();
         }
         i++;
@@ -79,7 +82,7 @@ static void check_duplicate_overflow(char **nums)
     free(arr);
 }
 
-void check_digits(char **nums)
+void check_digits(char **nums, t_stack **a, t_stack **b, int should_free)
 {
     int i;
     int j;
@@ -92,14 +95,24 @@ void check_digits(char **nums)
         if (nums[i][j] == '+' || nums[i][j] == '-')
             j++;
         if (!nums[i][j])
+        {
+            free_stacks(a, b);
+            if (should_free)
+                ft_free_split(nums);
             error_exit();
+        }
         while (nums[i][j])
         {
             if (nums[i][j] < '0' || nums[i][j] > '9')
+            {
+                free_stacks(a, b);
+                if (should_free)
+                    ft_free_split(nums);
                 error_exit();
+            }
             j++;
         }
         i++;
     }
-    check_duplicate_overflow(nums);
+    check_duplicate_overflow(nums, a, b, should_free);
 }

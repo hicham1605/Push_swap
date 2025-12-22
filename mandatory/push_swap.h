@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 14:59:00 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/21 15:05:30 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/22 13:09:40 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 
 typedef struct s_stack
 {
-    int				content;
-    int				index;
-    struct s_stack	*next;
+	int				content;
+	int				index;
+	struct s_stack	*next;
 }	t_stack;
 
-void		check_digits(char **nums);
+void		check_digits(char **nums, t_stack **a, t_stack **b, int should_free);
 void		error_exit(void);
 int			count_len_num(char **nums);
 void		check_empty(char **nums);
@@ -45,10 +45,16 @@ void		rrr(t_stack **a, t_stack **b);
 void		create_stacks(char **nums, t_stack **a, t_stack **b);
 void        assign_index(t_stack *a);
 int			ft_is_sorted(t_stack *a);
+void		ft_last_step(t_stack **a, t_stack **b);
+t_stack		*ft_find_max(t_stack *stack);
+int			current_index(t_stack *stack, t_stack *max);
 void		sort_2(t_stack **a, t_stack **b);
 void		sort_3(t_stack **a, t_stack **b);
 void		sort_5(t_stack **a, t_stack **b);
-void		algo_sort(t_stack **a, t_stack **b);
+void		ft_sort_stacks(t_stack **a, t_stack **b);
+void		algo_sort(t_stack **a, t_stack **b, int *array);
+int			*fall_array(t_stack **a);
+int			ft_len_stack(t_stack **a);
 void		free_stacks(t_stack **a, t_stack **b);
 int			stack_size(t_stack *stack);
 t_stack		*find_last(t_stack *stack);
