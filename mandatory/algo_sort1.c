@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:13:36 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/22 15:09:26 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:30:02 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_in_index(t_stack *a, int len, int pos)
 	return (i);
 }
 
-int	initindex(t_stack **a, int *arr, int size)
+void	initindex(t_stack **a, int *arr, int size)
 {
 	t_stack	*tmp;
 	int		i;
@@ -54,7 +54,6 @@ int	initindex(t_stack **a, int *arr, int size)
 		tmp = tmp->next;
 		i++;
 	}
-	return (i);
 }
 
 int	ft_chunk_size(int size)
@@ -69,9 +68,10 @@ int	ft_chunk_size(int size)
 
 void	algo_sort(t_stack **a, t_stack **b, int *array)
 {
-	int (chunk_size), (i);
-	initindex(a, array, ft_len_stack(a));
-	chunk_size = ft_chunk_size(ft_len_stack(a));
+	int (chunk_size), (i), (size);
+	size = ft_len_stack(a);
+	initindex(a, array, size);
+	chunk_size = ft_chunk_size(size);
 	i = 0;
 	while (*a)
 	{

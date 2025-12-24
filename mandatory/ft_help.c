@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:16:39 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/22 15:28:32 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/23 15:25:13 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,6 @@ void	assign_index(t_stack *a)
 		current = current->next;
 	}
 }
-
-// void	error_exit(void)
-// {
-// 	write(2, "Error\n", 6);
-// 	exit(1);
-// }
-
-// int	count_len_num(char **nums)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (nums[i])
-// 		i++;
-// 	return (i);
-// }
-
-// void	check_empty(char **nums)
-// {
-// 	if (!nums || !nums[0])
-// 		error_exit();
-// }
 
 void	ft_free_split(char **split)
 {

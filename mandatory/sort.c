@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 16:12:49 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/22 15:05:48 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/24 21:12:56 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ void	sort_2(t_stack **a, t_stack **b)
 
 void	sort_3(t_stack **a, t_stack **b)
 {
-	int	first;
-	int	second;
-	int	third;
-
+	int	(first), (second), (third);
 	(void)b;
+	if (!*a || !(*a)->next || !(*a)->next->next)
+        return ;
 	first = (*a)->content;
 	second = (*a)->next->content;
 	third = (*a)->next->next->content;
+	if (first < second && second < third)
+        return ;
 	if (first > second && second < third && first < third)
 		sa(a);
 	else if (first > second && second > third)
@@ -46,9 +47,22 @@ void	sort_3(t_stack **a, t_stack **b)
 	else if (first < second && second > third && first > third)
 		rra(a);
 }
-
+void	sort_4(t_stack **a, t_stack **b)
+{
+	assign_index(*a);
+	while (stack_size(*a) > 3)
+	{
+		if ((*a)->index == 0)
+			pb(a, b);
+		else
+			ra(a);
+	}
+	sort_3(a, b);
+	pa(a, b);
+}
 void	sort_5(t_stack **a, t_stack **b)
 {
+	assign_index(*a);
 	while (stack_size(*a) > 3)
 	{
 		if ((*a)->index == 0 || (*a)->index == 1)
@@ -57,7 +71,7 @@ void	sort_5(t_stack **a, t_stack **b)
 			ra(a);
 	}
 	sort_3(a, b);
-	if ((*b)->index < (*b)->next->index)
+	if (stack_size(*b) == 2 && (*b)->index < (*b)->next->index)
 		sb(b);
 	pa(a, b);
 	pa(a, b);

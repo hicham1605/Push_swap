@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 13:15:04 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/22 15:31:53 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:07:07 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-static void	duplicate(long *arr, int size)
+static int	duplicate(long *arr, int size)
 {
 	int	i;
 	int	j;
@@ -47,20 +47,28 @@ static void	duplicate(long *arr, int size)
 		while (j < size)
 		{
 			if (arr[i] == arr[j])
-				error_exit();
+				return (0);
 			j++;
 		}
 		i++;
 	}
+	return (1);
+}
+
+static void	freeexit(t_stack **a, t_stack **b, char **nums, int should_free)
+{
+	free_stacks(a, b);
+	if (should_free)
+		ft_free_split(nums);
+	error_exit();
 }
 
 static void	check_duplicate_overflow(char **nums, t_stack **a, t_stack **b,
 		int should_free)
 {
-	int		i;
-	int		count;
 	long	*arr;
 
+	int		(i), (count);
 	count = count_len_num(nums);
 	arr = malloc(sizeof(long) * count);
 	if (!arr)
@@ -72,26 +80,20 @@ static void	check_duplicate_overflow(char **nums, t_stack **a, t_stack **b,
 		if (arr[i] < INT_MIN || arr[i] > INT_MAX)
 		{
 			free(arr);
-			free_stacks(a, b);
-			if (should_free)
-				ft_free_split(nums);
-			error_exit();
+			freeexit(a, b, nums, should_free);
 		}
 		i++;
 	}
-	duplicate(arr, count);
+	if (!duplicate(arr, count))
+    {
+        free(arr);
+        freeexit(a, b, nums, should_free);
+    }
 	free(arr);
 }
 
-static void	freeexit(t_stack **a, t_stack **b, char **nums, int should_free)
-{
-	free_stacks(a, b);
-	if (should_free)
-		ft_free_split(nums);
-	error_exit();
-}
 
-void	check_digits(char **nums, t_stack **a, t_stack **b, int should_free)
+int	check_digits(char **nums, t_stack **a, t_stack **b, int should_free)
 {
 	int	i;
 	int	j;
@@ -104,14 +106,15 @@ void	check_digits(char **nums, t_stack **a, t_stack **b, int should_free)
 		if (nums[i][j] == '+' || nums[i][j] == '-')
 			j++;
 		if (!nums[i][j])
-			freeexit(a, b, nums, should_free);
+			return (0);
 		while (nums[i][j])
 		{
 			if (nums[i][j] < '0' || nums[i][j] > '9')
-				freeexit(a, b, nums, should_free);
+				return (0);
 			j++;
 		}
 		i++;
 	}
 	check_duplicate_overflow(nums, a, b, should_free);
+	return (1);
 }

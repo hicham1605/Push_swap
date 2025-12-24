@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 13:29:16 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/22 14:56:49 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/23 15:48:57 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	ft_last_step(t_stack **a, t_stack **b)
 		if ((*b)->content == max->content)
 		{
 			pa(a, b);
-			max = ft_find_max(*b);
+			if (*b)
+				max = ft_find_max(*b);
 		}
 		else if (current_index(*b, max) <= ft_len_stack(b) / 2)
 			rb(b);

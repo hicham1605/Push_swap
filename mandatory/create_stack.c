@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:26:03 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/21 11:39:57 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/23 17:27:40 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	add_to_stack(t_stack **stack, t_stack *new)
 	}
 }
 
-void	create_stacks(char **nums, t_stack **a, t_stack **b)
+int	create_stacks(char **nums, t_stack **a, t_stack **b)
 {
 	int		i;
 	long	value;
@@ -83,9 +83,9 @@ void	create_stacks(char **nums, t_stack **a, t_stack **b)
 	{
 		value = ft_atol(nums[i]);
 		if (value < INT_MIN || value > INT_MAX)
-			error_exit();
+			return (0);
 		add_to_stack(a, new_node((int)value));
 		i++;
 	}
-	assign_index(*a);
+	return (1);
 }
