@@ -6,7 +6,7 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 16:12:49 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/24 21:12:56 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/27 10:16:49 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	sort_2(t_stack **a, t_stack **b)
 
 void	sort_3(t_stack **a, t_stack **b)
 {
-	int	(first), (second), (third);
+	int (first), (second), (third);
 	(void)b;
 	if (!*a || !(*a)->next || !(*a)->next->next)
-        return ;
+		return ;
 	first = (*a)->content;
 	second = (*a)->next->content;
 	third = (*a)->next->next->content;
 	if (first < second && second < third)
-        return ;
+		return ;
 	if (first > second && second < third && first < third)
 		sa(a);
 	else if (first > second && second > third)
@@ -47,6 +47,7 @@ void	sort_3(t_stack **a, t_stack **b)
 	else if (first < second && second > third && first > third)
 		rra(a);
 }
+
 void	sort_4(t_stack **a, t_stack **b)
 {
 	assign_index(*a);
@@ -60,6 +61,7 @@ void	sort_4(t_stack **a, t_stack **b)
 	sort_3(a, b);
 	pa(a, b);
 }
+
 void	sort_5(t_stack **a, t_stack **b)
 {
 	assign_index(*a);

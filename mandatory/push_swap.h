@@ -6,13 +6,12 @@
 /*   By: hiouzddo <hiouzddo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 14:59:00 by hiouzddo          #+#    #+#             */
-/*   Updated: 2025/12/24 15:55:44 by hiouzddo         ###   ########.fr       */
+/*   Updated: 2025/12/27 10:13:41 by hiouzddo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 # include <limits.h>
 # include <stdio.h>
@@ -25,8 +24,8 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 }					t_stack;
-	
-int					check_digits(char **nums, t_stack **a, t_stack **b, int should_free);
+int					check_digits(char **nums, t_stack **a, t_stack **b,
+						int should_free);
 void				error_exit(void);
 int					count_len_num(char **nums);
 void				check_empty(char **nums);
