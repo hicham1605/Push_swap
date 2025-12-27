@@ -15,8 +15,8 @@ SRC = mandatory/push_swap.c mandatory/ft_check.c mandatory/ft_help.c \
 
 SRCB = bonus/push_swap_bonus.c bonus/ft_check.c bonus/create_stack.c \
     bonus/check_commands.c bonus/get_next_line.c bonus/get_next_line_utils.c \
-    mandatory/ft_help.c mandatory/ft_help1.c \
-    bonus/operation_swap.c bonus/operation_push.c \
+    mandatory/ft_help.c mandatory/ft_help1.c bonus/operation_swap.c \
+	bonus/operation_push.c \
     bonus/operation_rotate.c bonus/operation_reverse_rotate.c
 OBJ = $(SRC:.c=.o)
 OBJB = $(SRCB:.c=.o)
